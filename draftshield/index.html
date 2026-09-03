@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Privacy Policy for DraftShield.">
+  <title>DraftShield — Privacy Policy</title>
+  <style>
+:root{--bg:#f4f5f2;--paper:#fff;--ink:#1d2722;--muted:#6f7a74;--line:#dfe4df;--accent:#2e7d57;--soft:color-mix(in srgb,var(--accent) 8%,white)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.72 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--accent)}.page{max-width:960px;margin:0 auto;padding:54px 24px 72px}
+.mast{display:flex;justify-content:space-between;gap:28px;align-items:flex-end;padding-bottom:22px;border-bottom:2px solid var(--ink)}
+.product{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:850;color:var(--accent)}h1{font-size:42px;line-height:1.05;letter-spacing:-.04em;margin:8px 0 0}.meta{text-align:right;color:var(--muted);font-size:12px;white-space:nowrap}
+.lead{padding:28px 0 24px;max-width:820px;font-size:16px;color:#3d4943}.summary{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:8px;display:grid;grid-template-columns:150px 1fr;gap:18px}.summary b{font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--accent)}.summary span{color:#44504a}
+.contents{padding:16px 0 10px;display:flex;flex-wrap:wrap;gap:6px 16px;border-bottom:1px solid var(--line)}.contents a{font-size:10px;color:#68746d;text-decoration:none}.contents a:hover{color:var(--accent)}
+section{display:grid;grid-template-columns:190px minmax(0,1fr);gap:28px;padding:28px 0;border-bottom:1px solid var(--line)}h2{font-size:15px;line-height:1.35;margin:0;letter-spacing:-.01em}section>div,p,ul{margin-top:0}p{color:#455049;margin:0 0 12px}ul{color:#455049;padding-left:20px;margin-bottom:12px}li+li{margin-top:6px}code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;background:#eef1ee;padding:2px 5px;border-radius:4px}
+.note{padding:13px 15px;background:var(--soft);border-left:3px solid var(--accent);margin:14px 0;color:#3e4a44}.footer{display:flex;justify-content:space-between;gap:20px;padding-top:24px;color:var(--muted);font-size:11px}
+@media(max-width:650px){.page{padding:28px 16px 50px}.mast{align-items:flex-start;flex-direction:column}.meta{text-align:left}h1{font-size:35px}.summary,section{grid-template-columns:1fr;gap:8px}section{padding:23px 0}}
+</style>
+</head>
+<body>
+  <main class="page">
+    <header class="mast">
+      <div>
+        <div class="product">DraftShield</div>
+        <h1>Privacy Policy</h1>
+      </div>
+      <div class="meta">
+        Effective September 3, 2026<br>
+        Reviewed version 1.0.0
+      </div>
+    </header>
+
+    <p class="lead">
+      This policy explains in detail how DraftShield handles form text, local recovery checkpoints, webpage access, retention, deletion, sensitive-field exclusions, and user controls in version 1.0.0.
+    </p>
+
+    <div class="summary">
+      <b>At a glance</b>
+      <span>DraftShield stores eligible recoverable form text locally in your Chrome profile. Automatic protection requires HTTP/HTTPS page access, but the local recovery database is not sent to a DraftShield server during normal operation.</span>
+    </div>
+
+    <nav class="contents">
+      <a href="#s1">Purpose and scope</a>
+      <a href="#s2">How DraftShield works</a>
+      <a href="#s3">Information processed from webpages</a>
+      <a href="#s4">Sensitive fields excluded from autosave</a>
+      <a href="#s5">Information DraftShield does not intentionally collect</a>
+      <a href="#s6">Local storage and recovery checkpoints</a>
+      <a href="#s7">Retention settings</a>
+      <a href="#s8">Pause on this site</a>
+      <a href="#s9">Host permissions</a>
+      <a href="#s10">Chrome storage permission</a>
+      <a href="#s11">Restoring a saved draft</a>
+      <a href="#s12">Analytics, tracking, advertising, and remote AI</a>
+      <a href="#s13">Third-party websites and network activity</a>
+      <a href="#s14">Sharing, sale, and legal requests</a>
+      <a href="#s15">Deletion and user control</a>
+      <a href="#s16">Security considerations</a>
+      <a href="#s17">Children and general-purpose use</a>
+      <a href="#s18">International processing</a>
+      <a href="#s19">Changes to this privacy policy</a>
+      <a href="#s20">Contact</a>
+    </nav>
+
+    <section id="s1">
+      <h2>Purpose and scope</h2>
+      <div>
+        <p>
+          DraftShield is a local form-recovery extension designed to reduce accidental loss of text
+          typed into eligible fields on ordinary HTTP and HTTPS webpages.
+        </p>
+        <p>
+          This policy covers DraftShield version 1.0.0, including its content script, background
+          service worker, popup interface, local recovery database, checkpoint history, retention
+          controls, pause controls, and restore workflow.
+        </p>
+        <p>
+          This policy does not govern the websites on which DraftShield runs, Google Chrome, the
+          Chrome Web Store, your operating system, browser-profile backup software, or other
+          extensions. Those products may process information independently.
+        </p>
+      </div>
+    </section>
+    <section id="s2">
+      <h2>How DraftShield works</h2>
+      <div>
+        <p>
+          DraftShield runs a packaged content script on ordinary HTTP and HTTPS webpages so that it
+          can detect eligible editable fields and protect text while the user is typing.
+        </p>
+        <p>
+          When an eligible field changes, DraftShield prepares a bounded local representation of the
+          form and sends it to the extension background logic. The background logic stores the latest
+          recoverable state and a limited set of checkpoints in <code>chrome.storage.local</code>.
+        </p>
+        <p>
+          If the page is later reloaded, closed, replaced, or otherwise loses the text, the user can
+          open DraftShield and restore a saved draft back into compatible fields on the page.
+        </p>
+        <div class="note">
+          DraftShield is a recovery utility, not a submission service. It does not submit forms on
+          your behalf and does not send saved drafts to the website unless you explicitly restore a
+          draft into that page and then choose to submit the form yourself.
+        </div>
+      </div>
+    </section>
+    <section id="s3">
+      <h2>Information processed from webpages</h2>
+      <div>
+        <p>
+          To identify, save, display, and restore a draft, DraftShield may process information
+          associated with eligible forms and editable fields on a webpage.
+        </p>
+        <p>
+          A local draft can include:
+        </p>
+        <ul>
+          <li>The page URL and hostname.</li>
+          <li>The page title used to make a recovery item recognizable.</li>
+          <li>A locally generated form identifier or form label.</li>
+          <li>Field labels, names, IDs, or other bounded identifiers used to match a saved field.</li>
+          <li>The type of an eligible field.</li>
+          <li>The text currently entered into that eligible field.</li>
+          <li>Creation, update, and checkpoint timestamps.</li>
+          <li>A bounded history of recent recovery checkpoints.</li>
+        </ul>
+        <p>
+          The extension processes this information only because it is necessary to provide recovery.
+          DraftShield does not need to understand the semantic meaning of your text.
+        </p>
+      </div>
+    </section>
+    <section id="s4">
+      <h2>Sensitive fields excluded from autosave</h2>
+      <div>
+        <p>
+          DraftShield is intentionally conservative around common credential and payment fields.
+          Sensitive-field filtering happens before a candidate field is written into the recovery
+          state.
+        </p>
+        <p>
+          Version 1.0.0 is designed not to save:
+        </p>
+        <ul>
+          <li>Password fields.</li>
+          <li>Hidden inputs.</li>
+          <li>File-upload inputs and local file contents.</li>
+          <li>Common payment-card number fields.</li>
+          <li>CVV, CVC, CSC, security-code, and similar card-verification fields.</li>
+          <li>One-time-code, OTP, verification-code, and similar authentication fields.</li>
+          <li>Fields marked with password-oriented autocomplete behavior.</li>
+          <li>Fields whose names, IDs, labels, or metadata match known credential or financial patterns.</li>
+        </ul>
+        <p>
+          The sensitive-field matcher includes defensive checks for custom naming patterns such as
+          card-related names that do not use a standard HTML input type.
+        </p>
+        <div class="note">
+          No heuristic can recognize every custom form on every website. DraftShield should not be
+          treated as an encrypted secrets manager. If a page contains information that you do not
+          want stored locally, pause DraftShield on that site before entering the information.
+        </div>
+      </div>
+    </section>
+    <section id="s5">
+      <h2>Information DraftShield does not intentionally collect</h2>
+      <div>
+        <p>
+          DraftShield is not designed to collect information for the developer. In normal use, the
+          developer does not receive the local recovery database.
+        </p>
+        <p>
+          DraftShield does not intentionally collect or transmit:
+        </p>
+        <ul>
+          <li>Your Chrome account credentials.</li>
+          <li>Your saved browser passwords.</li>
+          <li>Browser cookies.</li>
+          <li>Your full browsing history as a developer-side profile.</li>
+          <li>Your bookmarks or download history.</li>
+          <li>Your precise physical location.</li>
+          <li>Your microphone, camera, contacts, or local files.</li>
+          <li>Advertising identifiers or cross-site marketing profiles.</li>
+        </ul>
+        <p>
+          The extension necessarily sees the URL and form context of pages on which its content
+          script is operating, because that information is required to associate a local draft with
+          the correct page. That local association is not uploaded to the developer.
+        </p>
+      </div>
+    </section>
+    <section id="s6">
+      <h2>Local storage and recovery checkpoints</h2>
+      <div>
+        <p>
+          DraftShield uses <code>chrome.storage.local</code> to retain the recovery state in the
+          current Chrome profile. The primary state key used by version 1.0.0 is
+          <code>draftShieldStateV1</code>.
+        </p>
+        <p>
+          A draft can have a current state and a bounded number of recent checkpoints. Checkpoints
+          allow a user to recover an earlier locally saved version rather than being limited to only
+          the most recent state.
+        </p>
+        <p>
+          DraftShield applies limits to field size, the number of fields retained for a form, the
+          number of checkpoints, the number of retained forms, and the overall amount of local
+          recovery data. These limits reduce uncontrolled storage growth.
+        </p>
+        <p>
+          When storage limits are reached, older recovery information can be removed in favor of
+          more recent recoverable drafts.
+        </p>
+      </div>
+    </section>
+    <section id="s7">
+      <h2>Retention settings</h2>
+      <div>
+        <p>
+          The default local retention period is 14 days. Version 1.0.0 allows the user to select a
+          retention period of 1, 3, 7, 14, or 30 days.
+        </p>
+        <p>
+          Expired drafts are cleaned up during normal extension operation. Retention controls apply
+          to DraftShield's own local recovery records and do not affect the original website's data.
+        </p>
+        <p>
+          A shorter retention period reduces how long recoverable text remains available. A longer
+          period provides a larger recovery window but keeps eligible form text in the local browser
+          profile for a longer time.
+        </p>
+      </div>
+    </section>
+    <section id="s8">
+      <h2>Pause on this site</h2>
+      <div>
+        <p>
+          DraftShield provides a domain-level pause control. When protection is paused for a site,
+          new draft-save operations for that domain are rejected by the extension's background
+          logic.
+        </p>
+        <p>
+          The paused-domain preference is stored locally so the choice can continue across browser
+          sessions. The user can later resume protection from the popup.
+        </p>
+        <p>
+          Pausing protection prevents new recovery data for the paused domain. Existing drafts are
+          not necessarily deleted merely because the site is paused; they remain subject to the
+          normal deletion and retention controls.
+        </p>
+      </div>
+    </section>
+    <section id="s9">
+      <h2>Host permissions</h2>
+      <div>
+        <p>
+          DraftShield requests host access to <code>http://*/*</code> and
+          <code>https://*/*</code>. This broad page access is required because automatic form
+          protection must be present while the user types, rather than only after the user manually
+          activates the extension on each page.
+        </p>
+        <p>
+          The content script uses this access to identify eligible editable fields, observe changes,
+          create local recovery metadata, and restore a draft when requested.
+        </p>
+        <p>
+          DraftShield does not use these host permissions to scrape websites for a developer
+          database, create a remote browsing-history profile, or inject advertising.
+        </p>
+        <p>
+          Chrome may restrict extensions from running on certain protected browser pages. DraftShield
+          does not attempt to bypass those browser restrictions.
+        </p>
+      </div>
+    </section>
+    <section id="s10">
+      <h2>Chrome storage permission</h2>
+      <div>
+        <p>
+          The <code>storage</code> permission is required so DraftShield can persist local recovery
+          data after a tab closes or the browser restarts.
+        </p>
+        <p>
+          It is also used for local settings such as retention duration, checkpoint preferences,
+          paused domains, and supporting state needed by the recovery workflow.
+        </p>
+        <p>
+          Version 1.0.0 uses local extension storage rather than a DraftShield cloud account. Form
+          text is not intentionally synchronized to a developer-operated server.
+        </p>
+      </div>
+    </section>
+    <section id="s11">
+      <h2>Restoring a saved draft</h2>
+      <div>
+        <p>
+          Recovery is user-controlled. Opening a saved draft in the popup allows the user to review
+          available checkpoints and select which state should be restored.
+        </p>
+        <p>
+          When a restore is requested, DraftShield sends the selected local field data to the
+          compatible webpage so the corresponding eligible fields can be populated.
+        </p>
+        <p>
+          Websites may change their form structure between the time a draft is saved and restored.
+          If fields have been removed, renamed, reordered, replaced, or moved into unsupported
+          components, some values may not be restored automatically.
+        </p>
+        <p>
+          Restoring a draft does not automatically submit the form.
+        </p>
+      </div>
+    </section>
+    <section id="s12">
+      <h2>Analytics, tracking, advertising, and remote AI</h2>
+      <div>
+        <p>
+          DraftShield version 1.0.0 does not include Google Analytics, Firebase Analytics, Mixpanel,
+          Amplitude, Segment, PostHog, or a comparable third-party analytics service.
+        </p>
+        <p>
+          It does not include advertising networks, retargeting pixels, behavioral advertising
+          systems, fingerprinting logic, or cross-site marketing identifiers.
+        </p>
+        <p>
+          DraftShield does not send saved form content to a remote AI service for summarization,
+          classification, generation, or profiling.
+        </p>
+        <p>
+          The reviewed production package does not use <code>fetch</code>, XMLHttpRequest, or
+          WebSocket to upload the local draft database to the developer.
+        </p>
+      </div>
+    </section>
+    <section id="s13">
+      <h2>Third-party websites and network activity</h2>
+      <div>
+        <p>
+          The websites on which DraftShield runs can make their own network requests and can process
+          the information entered into their forms according to their own privacy practices.
+        </p>
+        <p>
+          Chrome, the operating system, antivirus software, browser-profile backup tools, enterprise
+          management, or other extensions may also process data independently.
+        </p>
+        <p>
+          DraftShield does not control those third-party systems. Users should review the privacy
+          practices of the websites where they enter information.
+        </p>
+      </div>
+    </section>
+    <section id="s14">
+      <h2>Sharing, sale, and legal requests</h2>
+      <div>
+        <p>
+          The developer does not sell, rent, trade, license, or provide DraftShield's local recovery
+          database to advertisers, data brokers, marketing companies, or analytics providers.
+        </p>
+        <p>
+          Because the local recovery database is not normally transmitted to the developer, the
+          developer generally cannot provide a remote copy of those drafts.
+        </p>
+        <p>
+          If the developer receives a valid legal request, only information actually possessed by
+          the developer can be produced. DraftShield's normal local-only recovery records are not a
+          developer-hosted database.
+        </p>
+      </div>
+    </section>
+    <section id="s15">
+      <h2>Deletion and user control</h2>
+      <div>
+        <p>
+          Users can delete individual saved drafts from the DraftShield interface and can use the
+          control for deleting all saved drafts.
+        </p>
+        <p>
+          Draft data can also be removed through Chrome's extension-data controls, by removing the
+          relevant Chrome profile, or by uninstalling the extension according to Chrome's behavior.
+        </p>
+        <p>
+          Deletion of local recovery data may be permanent. Version 1.0.0 does not provide a normal
+          cloud backup from which the developer can recover deleted checkpoints.
+        </p>
+        <p>
+          Browser-profile backups or operating-system backups created outside DraftShield may retain
+          copies independently. Those systems are controlled by their respective providers.
+        </p>
+      </div>
+    </section>
+    <section id="s16">
+      <h2>Security considerations</h2>
+      <div>
+        <p>
+          DraftShield reduces privacy exposure by keeping recovery data local, excluding common
+          sensitive-field categories, limiting retained data, and avoiding a developer-operated
+          draft server.
+        </p>
+        <p>
+          Local Chrome extension storage is not equivalent to an encrypted password vault. A person
+          or process with sufficient access to the same unlocked browser profile or device may be
+          able to access locally stored extension data.
+        </p>
+        <p>
+          Users should keep Chrome and their operating system updated, protect the device with
+          appropriate account security, and avoid using DraftShield as a place to intentionally
+          store passwords, card details, authentication codes, or other secrets.
+        </p>
+      </div>
+    </section>
+    <section id="s17">
+      <h2>Children and general-purpose use</h2>
+      <div>
+        <p>
+          DraftShield is a general-purpose form-recovery utility. It does not provide a social
+          network, public user profile, advertising profile, or account system targeted at children
+          or adults.
+        </p>
+        <p>
+          The extension does not knowingly maintain a developer-side database of personal
+          information about children. Any recoverable text typed by a user remains subject to the
+          same local processing and controls described in this policy.
+        </p>
+      </div>
+    </section>
+    <section id="s18">
+      <h2>International processing</h2>
+      <div>
+        <p>
+          DraftShield version 1.0.0 does not operate a developer server that receives the local
+          recovery database during normal use.
+        </p>
+        <p>
+          Because those drafts are not intentionally uploaded to DraftShield infrastructure, the
+          extension does not ordinarily transfer the local recovery database between DraftShield
+          data centers or countries.
+        </p>
+        <p>
+          Chrome, operating-system backup services, enterprise management, or websites themselves
+          may have independent international data practices outside DraftShield's control.
+        </p>
+      </div>
+    </section>
+    <section id="s19">
+      <h2>Changes to this privacy policy</h2>
+      <div>
+        <p>
+          This policy may be revised to improve clarity, reflect changes to DraftShield, respond to
+          browser-platform requirements, or describe changes in applicable privacy practices.
+        </p>
+        <p>
+          If a future version introduces cloud backup, accounts, analytics, remote AI, different
+          permissions, new host access, or materially different data handling, the policy and Chrome
+          Web Store disclosures should be updated accordingly.
+        </p>
+        <p>
+          The effective date and reviewed extension version are shown at the top of this page.
+        </p>
+      </div>
+    </section>
+    <section id="s20">
+      <h2>Contact</h2>
+      <div>
+        <p>
+          For privacy questions about DraftShield, use the developer contact information displayed
+          on the Chrome Web Store listing from which you obtained the extension.
+        </p>
+        <p>
+          When contacting the developer, avoid sending passwords, payment-card information,
+          authentication codes, or other sensitive form content unless it is strictly necessary for
+          the request.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>DraftShield · Local Form Recovery</span>
+      <span>Privacy questions: use the developer contact shown on the Chrome Web Store listing.</span>
+    </footer>
+  </main>
+</body>
+</html>
