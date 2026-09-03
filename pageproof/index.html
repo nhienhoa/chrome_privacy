@@ -1,1 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Privacy Policy for PageProof.">
+  <title>PageProof — Privacy Policy</title>
+  <style>
+:root{--bg:#f4f5f2;--paper:#fff;--ink:#1d2722;--muted:#6f7a74;--line:#dfe4df;--accent:#4969a8;--soft:color-mix(in srgb,var(--accent) 8%,white)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.72 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--accent)}.page{max-width:960px;margin:0 auto;padding:54px 24px 72px}
+.mast{display:flex;justify-content:space-between;gap:28px;align-items:flex-end;padding-bottom:22px;border-bottom:2px solid var(--ink)}
+.product{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:850;color:var(--accent)}h1{font-size:42px;line-height:1.05;letter-spacing:-.04em;margin:8px 0 0}.meta{text-align:right;color:var(--muted);font-size:12px;white-space:nowrap}
+.lead{padding:28px 0 24px;max-width:820px;font-size:16px;color:#3d4943}.summary{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:8px;display:grid;grid-template-columns:150px 1fr;gap:18px}.summary b{font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--accent)}.summary span{color:#44504a}
+.contents{padding:16px 0 10px;display:flex;flex-wrap:wrap;gap:6px 16px;border-bottom:1px solid var(--line)}.contents a{font-size:10px;color:#68746d;text-decoration:none}.contents a:hover{color:var(--accent)}
+section{display:grid;grid-template-columns:190px minmax(0,1fr);gap:28px;padding:28px 0;border-bottom:1px solid var(--line)}h2{font-size:15px;line-height:1.35;margin:0;letter-spacing:-.01em}section>div,p,ul{margin-top:0}p{color:#455049;margin:0 0 12px}ul{color:#455049;padding-left:20px;margin-bottom:12px}li+li{margin-top:6px}code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;background:#eef1ee;padding:2px 5px;border-radius:4px}
+.note{padding:13px 15px;background:var(--soft);border-left:3px solid var(--accent);margin:14px 0;color:#3e4a44}.footer{display:flex;justify-content:space-between;gap:20px;padding-top:24px;color:var(--muted);font-size:11px}
+@media(max-width:650px){.page{padding:28px 16px 50px}.mast{align-items:flex-start;flex-direction:column}.meta{text-align:left}h1{font-size:35px}.summary,section{grid-template-columns:1fr;gap:8px}section{padding:23px 0}}
+</style>
+</head>
+<body>
+  <main class="page">
+    <header class="mast">
+      <div>
+        <div class="product">PageProof</div>
+        <h1>Privacy Policy</h1>
+      </div>
+      <div class="meta">
+        Effective September 3, 2026<br>
+        Reviewed version 1.0.0
+      </div>
+    </header>
 
+    <p class="lead">
+      This policy explains in detail what PageProof reads from a user-selected webpage, how local snapshots and comparisons work, why its Chrome permissions are required, and how retained captures can be managed or deleted.
+    </p>
+
+    <div class="summary">
+      <b>At a glance</b>
+      <span>PageProof captures only when the user initiates a scan or snapshot. Captured page text, links, metadata, and SHA-256 fingerprints stay in local Chrome storage and are not uploaded to a PageProof server during normal use.</span>
+    </div>
+
+    <nav class="contents">
+      <a href="#s1">Purpose and scope</a>
+      <a href="#s2">What PageProof captures</a>
+      <a href="#s3">Information PageProof does not intentionally read</a>
+      <a href="#s4">Data minimization and capture limits</a>
+      <a href="#s5">Local snapshot storage</a>
+      <a href="#s6">Temporary comparison session data</a>
+      <a href="#s7">SHA-256 fingerprints</a>
+      <a href="#s8">How comparisons are calculated</a>
+      <a href="#s9">activeTab permission</a>
+      <a href="#s10">scripting permission</a>
+      <a href="#s11">storage permission</a>
+      <a href="#s12">Snapshot Library and deletion</a>
+      <a href="#s13">No analytics or behavioral tracking</a>
+      <a href="#s14">Advertising, remote AI, and external analysis</a>
+      <a href="#s15">Network activity</a>
+      <a href="#s16">Third-party websites</a>
+      <a href="#s17">Sharing, sale, and legal requests</a>
+      <a href="#s18">Security and limitations</a>
+      <a href="#s19">Children and international use</a>
+      <a href="#s20">Changes and contact</a>
+    </nav>
+
+    <section id="s1">
+      <h2>Purpose and scope</h2>
+      <div>
+        <p>
+          PageProof is a user-initiated webpage snapshot and comparison extension. It allows a user
+          to capture a bounded representation of a webpage, retain that snapshot locally, and later
+          compare a fresh scan of the same canonical URL with a saved version.
+        </p>
+        <p>
+          This policy covers PageProof version 1.0.0, including page scanning, local snapshots,
+          SHA-256 fingerprints, snapshot retention, link capture, the Snapshot Library, and the full
+          comparison workspace.
+        </p>
+        <p>
+          This policy does not govern the websites you inspect, Chrome, the Chrome Web Store, your
+          operating system, browser-profile backup software, or other extensions.
+        </p>
+      </div>
+    </section>
+    <section id="s2">
+      <h2>What PageProof captures</h2>
+      <div>
+        <p>
+          PageProof scans a page only after the user explicitly initiates a scan or capture from the
+          extension.
+        </p>
+        <p>
+          A snapshot may include:
+        </p>
+        <ul>
+          <li>The current page URL and a normalized or canonicalized URL used for matching.</li>
+          <li>The hostname and page title.</li>
+          <li>The local capture timestamp.</li>
+          <li>Visible text from a bounded set of semantic content blocks.</li>
+          <li>DOM paths used to match corresponding blocks later.</li>
+          <li>Nearby heading context used to make comparisons easier to understand.</li>
+          <li>A bounded list of visible links, link text, and normalized link destinations.</li>
+          <li>A locally calculated SHA-256 fingerprint of the captured representation.</li>
+        </ul>
+        <p>
+          PageProof is designed to capture enough structure for useful change detection without
+          storing a complete browser archive of the page.
+        </p>
+      </div>
+    </section>
+    <section id="s3">
+      <h2>Information PageProof does not intentionally read</h2>
+      <div>
+        <p>
+          Version 1.0.0 is not designed to read password values, browser cookies, saved credentials,
+          bookmarks, download history, microphone data, camera data, local files, or physical
+          location.
+        </p>
+        <p>
+          The page scanner does not intentionally read the current <code>value</code> of form
+          controls. This reduces the chance of snapshotting text that a user is actively typing into
+          an input field.
+        </p>
+        <p>
+          PageProof also does not continuously inspect all browser tabs. Access is tied to the
+          user-selected active tab through Chrome's <code>activeTab</code> permission.
+        </p>
+        <div class="note">
+          A webpage itself may visibly display confidential or personal information. If that
+          information appears inside a scanned visible content block, it can become part of the
+          local snapshot. Avoid capturing pages you do not want retained in your Chrome profile.
+        </div>
+      </div>
+    </section>
+    <section id="s4">
+      <h2>Data minimization and capture limits</h2>
+      <div>
+        <p>
+          PageProof does not save a full HTML document. The scanner uses a bounded set of semantic
+          elements and applies limits to the amount of information retained for each capture.
+        </p>
+        <p>
+          Version 1.0.0 is designed to retain up to:
+        </p>
+        <ul>
+          <li>180 text-oriented content blocks per capture.</li>
+          <li>220 visible links per capture.</li>
+          <li>1,400 characters for an individual captured text block.</li>
+        </ul>
+        <p>
+          These limits reduce storage growth and make the comparison process more predictable.
+        </p>
+        <p>
+          The extension also limits the number of retained snapshots for a URL and applies an
+          overall local storage budget. Older retained snapshots can be discarded when those limits
+          are reached.
+        </p>
+      </div>
+    </section>
+    <section id="s5">
+      <h2>Local snapshot storage</h2>
+      <div>
+        <p>
+          PageProof uses <code>chrome.storage.local</code> for the saved snapshot library. The main
+          state key used by version 1.0.0 is <code>pageProofStateV1</code>.
+        </p>
+        <p>
+          A retained snapshot can include the bounded page representation, capture metadata,
+          normalized URL information, link information, and the local content fingerprint.
+        </p>
+        <p>
+          PageProof does not require a PageProof account or a developer-operated cloud database for
+          normal snapshot storage.
+        </p>
+      </div>
+    </section>
+    <section id="s6">
+      <h2>Temporary comparison session data</h2>
+      <div>
+        <p>
+          When the user opens the full comparison workspace, PageProof may place the comparison
+          payload in <code>chrome.storage.session</code>.
+        </p>
+        <p>
+          Session storage is used so the comparison page can receive the relevant before/after data
+          without turning that temporary workspace payload into another long-term snapshot record.
+        </p>
+        <p>
+          The permanent retained records remain governed by the Snapshot Library and local storage
+          limits.
+        </p>
+      </div>
+    </section>
+    <section id="s7">
+      <h2>SHA-256 fingerprints</h2>
+      <div>
+        <p>
+          PageProof calculates a SHA-256 fingerprint from the captured representation so the user
+          can see whether two captured representations are identical or different.
+        </p>
+        <p>
+          The fingerprint is calculated locally. It is not submitted to a blockchain, public
+          timestamp authority, remote notarization service, or developer server in version 1.0.0.
+        </p>
+        <div class="note">
+          The fingerprint is an integrity aid, not legal certification. It does not independently
+          prove authorship, publication time, ownership, identity, or that a webpage was publicly
+          reachable at a particular moment.
+        </div>
+      </div>
+    </section>
+    <section id="s8">
+      <h2>How comparisons are calculated</h2>
+      <div>
+        <p>
+          PageProof compares a saved snapshot with a newly scanned representation locally in the
+          extension.
+        </p>
+        <p>
+          The comparison first uses stable DOM-path information where possible. For unmatched
+          blocks, PageProof can use bounded text similarity to distinguish likely modifications,
+          moves, additions, and removals.
+        </p>
+        <p>
+          Visible link sets are compared separately so link additions, removals, or destination
+          changes can be surfaced independently from text-block changes.
+        </p>
+        <p>
+          Comparison results may be imperfect when a site significantly restructures its DOM,
+          changes content dynamically, randomizes markup, or loads additional content after the
+          scan.
+        </p>
+      </div>
+    </section>
+    <section id="s9">
+      <h2>activeTab permission</h2>
+      <div>
+        <p>
+          PageProof uses the <code>activeTab</code> permission so the user can explicitly grant
+          temporary access to the currently selected page.
+        </p>
+        <p>
+          This permission is used when the user opens PageProof and chooses to scan or capture the
+          active page. It avoids the need for persistent host access to every website.
+        </p>
+        <p>
+          PageProof does not use <code>activeTab</code> to continuously monitor unrelated tabs in
+          the background.
+        </p>
+      </div>
+    </section>
+    <section id="s10">
+      <h2>scripting permission</h2>
+      <div>
+        <p>
+          PageProof uses the <code>scripting</code> permission to execute its packaged scanner in the
+          active tab after the user initiates a scan or capture.
+        </p>
+        <p>
+          The scanner reads the bounded page representation needed for the snapshot and returns that
+          result to the extension for local processing.
+        </p>
+        <p>
+          No remote JavaScript is downloaded or injected as part of this workflow.
+        </p>
+      </div>
+    </section>
+    <section id="s11">
+      <h2>storage permission</h2>
+      <div>
+        <p>
+          The <code>storage</code> permission allows PageProof to retain snapshots locally and to
+          pass temporary comparison information to the full comparison workspace.
+        </p>
+        <p>
+          Version 1.0.0 does not use this permission to upload captures to a PageProof cloud
+          database.
+        </p>
+        <p>
+          Chrome profile migration, device backups, or enterprise-management tools may separately
+          copy browser storage according to their own behavior.
+        </p>
+      </div>
+    </section>
+    <section id="s12">
+      <h2>Snapshot Library and deletion</h2>
+      <div>
+        <p>
+          The Snapshot Library lists locally retained captures and provides user controls for
+          managing them.
+        </p>
+        <p>
+          Users can delete individual snapshots and can clear the retained snapshot collection.
+          Storage-budget cleanup can also remove older retained snapshots automatically when limits
+          are reached.
+        </p>
+        <p>
+          Once a local snapshot is deleted, PageProof version 1.0.0 does not provide a normal cloud
+          backup from which the developer can restore it.
+        </p>
+      </div>
+    </section>
+    <section id="s13">
+      <h2>No analytics or behavioral tracking</h2>
+      <div>
+        <p>
+          PageProof version 1.0.0 does not include Google Analytics, Firebase Analytics, Mixpanel,
+          Amplitude, Segment, PostHog, or a comparable analytics SDK.
+        </p>
+        <p>
+          It does not build a developer-side profile of which websites you capture, how often you
+          compare pages, which changes you inspect, or which snapshots you retain.
+        </p>
+        <p>
+          The extension does not use advertising identifiers, tracking pixels, fingerprinting
+          technologies, or cross-site behavioral profiling.
+        </p>
+      </div>
+    </section>
+    <section id="s14">
+      <h2>Advertising, remote AI, and external analysis</h2>
+      <div>
+        <p>
+          PageProof does not display third-party advertising and does not include an advertising
+          network or retargeting system.
+        </p>
+        <p>
+          Captured page text is not sent to a remote AI service for summarization, classification,
+          semantic comparison, content generation, or profiling in version 1.0.0.
+        </p>
+        <p>
+          The comparison logic and fingerprinting required by the current product operate locally.
+        </p>
+      </div>
+    </section>
+    <section id="s15">
+      <h2>Network activity</h2>
+      <div>
+        <p>
+          The reviewed production package does not use <code>fetch</code>, XMLHttpRequest, or
+          WebSocket to upload saved snapshots or page text to a developer backend.
+        </p>
+        <p>
+          The page being inspected may independently make network requests while it is open. Chrome,
+          the operating system, security software, or other extensions can also make their own
+          requests.
+        </p>
+        <p>
+          Those third-party requests are not PageProof snapshot uploads.
+        </p>
+      </div>
+    </section>
+    <section id="s16">
+      <h2>Third-party websites</h2>
+      <div>
+        <p>
+          PageProof operates on webpages created and controlled by third parties. Those websites may
+          have their own privacy policies, authentication systems, personalization, cookies, and
+          data-collection practices.
+        </p>
+        <p>
+          PageProof does not control the accuracy, legality, availability, or privacy practices of a
+          webpage being captured.
+        </p>
+        <p>
+          Users are responsible for deciding whether they are permitted to capture or retain content
+          from a particular page.
+        </p>
+      </div>
+    </section>
+    <section id="s17">
+      <h2>Sharing, sale, and legal requests</h2>
+      <div>
+        <p>
+          The developer does not sell, rent, trade, license, or provide the local PageProof snapshot
+          library to advertisers, data brokers, marketing companies, or analytics providers.
+        </p>
+        <p>
+          During normal use, the developer does not receive the locally stored page text,
+          fingerprints, or comparison library.
+        </p>
+        <p>
+          If a valid legal request is received, only information actually possessed by the
+          developer can be produced. PageProof's normal local snapshot library is not a
+          developer-hosted archive.
+        </p>
+      </div>
+    </section>
+    <section id="s18">
+      <h2>Security and limitations</h2>
+      <div>
+        <p>
+          PageProof limits privacy exposure by requiring user-initiated page access, keeping the
+          snapshot library local, applying capture and storage limits, and avoiding a remote
+          comparison backend.
+        </p>
+        <p>
+          Local Chrome extension storage is not an encrypted evidence vault. Someone with sufficient
+          access to the same unlocked browser profile, device, browser files, or profile backup may
+          potentially access local snapshots.
+        </p>
+        <p>
+          Users should avoid capturing confidential pages when local browser-profile storage does
+          not meet their security requirements.
+        </p>
+        <p>
+          PageProof comparisons are informational and should not be treated as a substitute for
+          professional archival, legal evidence preservation, or regulated records-management
+          systems.
+        </p>
+      </div>
+    </section>
+    <section id="s19">
+      <h2>Children and international use</h2>
+      <div>
+        <p>
+          PageProof is a general webpage research and comparison utility. It does not create public
+          social profiles, request dates of birth, provide user-to-user messaging, or operate a
+          behavioral advertising profile for children or adults.
+        </p>
+        <p>
+          Because the local snapshot library is not intentionally uploaded to PageProof servers,
+          PageProof does not ordinarily transfer that library between developer-operated data
+          centers or countries.
+        </p>
+        <p>
+          Chrome, websites, operating-system backups, or enterprise tools may have independent
+          international processing practices outside PageProof's control.
+        </p>
+      </div>
+    </section>
+    <section id="s20">
+      <h2>Changes and contact</h2>
+      <div>
+        <p>
+          This policy may be updated to improve clarity, reflect changes to PageProof, address Chrome
+          Web Store requirements, or describe new privacy practices.
+        </p>
+        <p>
+          Material changes such as cloud snapshot storage, accounts, analytics, remote AI, broader
+          website access, third-party timestamping, or new permissions should be reflected in an
+          updated privacy policy and store disclosures.
+        </p>
+        <p>
+          For privacy questions about PageProof, use the developer contact information shown on the
+          Chrome Web Store listing from which you obtained the extension.
+        </p>
+        <p>
+          When contacting the developer, avoid including confidential page content unless it is
+          strictly necessary to explain the request.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>PageProof · Local Page Snapshots</span>
+      <span>Privacy questions: use the developer contact shown on the Chrome Web Store listing.</span>
+    </footer>
+  </main>
+</body>
+</html>
